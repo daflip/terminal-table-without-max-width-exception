@@ -330,10 +330,10 @@ module Terminal
       full_width = dp[n_cols][0].keys.first
       unless style.width.nil?
         new_width = style.width - space_width - style.border_y_width
-        if new_width < full_width
-          raise "Table width exceeds wanted width " +
-                "of #{style.width} characters."
-        end
+        #if new_width < full_width
+        #  raise "Table width exceeds wanted width " +
+        #        "of #{style.width} characters."
+        #end
         full_width = new_width
       end
 
