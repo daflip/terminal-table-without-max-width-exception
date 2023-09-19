@@ -167,10 +167,26 @@ module Terminal
     # Render the table.
 
     def render
-      elaborate_rows unless @elaborated
-      @rows.map { |r| style.margin_left + r.render.rstrip }.join("\n")
+        elaborate_rows unless @elaborated
+        @rows.map do  |r| 
+          #binding.pry
+          new = (style.margin_left + r.render.rstrip )
+        if new.encoding.to_s != 'UTF-8'
+        begin
+
+          begin
+            new.encode("UTF-8")
+          rescue 
+            new.encode("UTF-8", invalid: :replace, undef: :replace)
+          end
+
+        else
+          new
+        end
+      end.join("\n")
     end
     alias :to_s :render
+
 
     ##
     # Return rows without separator rows.
