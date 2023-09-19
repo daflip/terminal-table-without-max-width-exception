@@ -172,7 +172,6 @@ module Terminal
           #binding.pry
           new = (style.margin_left + r.render.rstrip )
         if new.encoding.to_s != 'UTF-8'
-        begin
 
           begin
             new.encode("UTF-8")
